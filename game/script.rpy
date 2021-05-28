@@ -644,6 +644,6 @@ label start:
 
     "END OF PART 3"
 
-    jump start2
+    jump chp2_2
 
     return
