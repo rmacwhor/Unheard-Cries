@@ -19,8 +19,7 @@ define fade_pov = Fade(0.5, 0.0, 0.5) #will be used to fade to black for a secon
 
 # The game starts here.
 
-label start:
-    label chp2_2:
+label chp2_2:
     #CHAPTER 2.2
     #THE SCENE STARTS FROM THE PERSPECTIVE OF CHARLES AND MARGARET STANDING AT THE FRONT DOOR OF FRANCIS
     scene bg room #front door
