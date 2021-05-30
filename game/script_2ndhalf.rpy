@@ -164,8 +164,8 @@ transform rotate(r):
 
 default puzzle_p = puzzle_handler(
 
-    "puzzle.jpeg",  #if the img is in other format (jpg), change its name#
-    250,                # Size of the pieces [must be an even number]
+    "puzzle.png",  #if the img is in other format, change its type. Ex: "puzzle.png" for png type image#
+    175,                # Size of the pieces [must be an even number]
 )
 
 ##End of minigames
