@@ -22,15 +22,13 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene bg room #replace later
-    with fade
+    scene l room with fade
 
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    show eileen happy #lisa's room
-
+    show l room
     # These display lines of dialogue.
     "{i}Music Playing{/i}"
 
@@ -38,27 +36,27 @@ label start:
 
     "{i}Lisa replies with an annoyance in her tone{/i}"
 
-    show eileen happy #lisa
+    show lisa
     Lisa "Coming"
+    hide lisa
 
-    hide eileen happy #clear the scene
+    #hide lisa #clear the scene
     "{i}Lisa puts her radio away and heads out into the hall where
     she can see her younger brother playing with a toy train set{/i}"
 
-    show eileen happy #lisa
+    show lisa #lisa
     Lisa "{i}Michael really loves that train set I got him last christmas.{/i}"
-
-    show eileen happy #lisa
     Lisa "Let’s go eat, Mikey"
+    hide lisa
 
-    show eileen happy #MIkey
+    show mikey #Mikey
     Mikey "Mmmkay!!"
+    hide mikey
 
-    show eileen happy #lisa's room
     "{i}Michael rushes towards Lisa’s side, clutching his toy train.{/i}"
 
-    scene bg room #dining room
-    with fade
+    scene dining room with fade
+    show dining room
 
     show eileen happy #Marge
     Marge "Kids! We’ve got some exciting news! Your father’s been given 3 weeks of paid leave."
@@ -96,7 +94,7 @@ label start:
     show eileen happy #Mikey
     Mikey "OK Dad!"
 
-    scene bg room #leaving the airport
+    scene leave airport #leaving the airport
     with fade
 
     "{i}Some time later... {/i}"
@@ -104,7 +102,7 @@ label start:
 
     "Lisa (holding her radio)" "Mikey, I told you to leave that toy train at home, it’s embarrassing to have you next to me in public"
 
-    show eileen happy #Mikey
+    show mikey #Mikey
     Mikey "NO MR. TRAIN WOULD MISS ME"
 
     show eileen happy #Marge
@@ -114,15 +112,16 @@ label start:
     Charles "I see that we’re all tired after a long flight. Let’s check into our hotel, drop off our bags there, and explore the city."
 
     hide eileen happy #clear the scene
-    "Lisa and Micheal" "Fineee"
+    "Lisa and Michael" "Fineee"
 
-    scene bg room #Montage 1
+    scene anthro museum #Montage 1
     with fade
 
-    scene bg room #back at the hotel at the end of montage
+    scene lr hotel #back at the hotel at the end of montage
     with fade
 
-    "faint crying can be heard"
+    play sound "cry.wav" volume 0.3
+    pause 3
     "Marge sits up from the bed"
 
     show eileen happy #Marge
@@ -145,10 +144,10 @@ label start:
 
     "The pair goes back to sleep"
 
-    scene bg room #Montage 2
+    scene chap castle #Montage 2
     with fade
 
-    scene bg room #back at the hotel at the end of montage
+    scene lr hotel #back at the hotel at the end of montage
     with fade
 
     "{i}faint crying can be heard but louder than the previous night{/i}"
@@ -172,10 +171,10 @@ label start:
     show eileen happy #Marge
     Marge "Yeah, we’ll do that."
 
-    scene bg room #Montage 3
+    scene art palace #Montage 3
     with fade
 
-    scene bg room #back at the hotel at the end of montage
+    scene lr hotel #back at the hotel at the end of montage
     with fade
 
     show eileen happy #Marge
@@ -212,7 +211,7 @@ label start:
     show eileen happy #Marge
     Marge "Yes, we should"
 
-    scene bg room #next morning
+    scene lr hotel #hotel
     with fade
 
     "{i}The next morning{/i}"
@@ -247,14 +246,14 @@ label start:
     show eileen happy #Charles
     Charles "MARGE! THE KIDS ARE GONE!"
 
-    scene bg room #Black screen
+    scene black screen #Black screen
     with fade
 
     "END OF INTRODUCTION"
 
 #CHAPTER 1 Jingyu's part
 
-    scene bg room #Kid's room
+    scene kid hotel #Kid's room
     with fade
 
     "Marge trembling" "Where did our kids go, Charlie? The front door is locked. There is no way they disappear from our room."
@@ -272,33 +271,33 @@ label start:
 
     menu initial_choice:
         "Search the living room":
-            scene bg room #living room
+            scene lr hotel #living room
             with fade
             "Nobody is there"
             jump choose_living_room
         "Search the balcony":
-            scene bg room #balcony
+            scene balc hotel #balcony
             with fade
             "Nobody is there"
             jump choose_balcony
 
     menu choose_living_room:
         "Search the balcony":
-            scene bg room #balcony
+            scene balc hotel #balcony
             with fade
             "Nobody is there"
             jump choose_bathroom
 
     menu choose_balcony:
         "Search the living room":
-            scene bg room #living room
+            scene lr hotel #living room
             with fade
             "Nobody is there"
             jump choose_bathroom
 
     menu choose_bathroom:
         "Search the bathroom":
-            scene bg room #bathroom
+            scene black screen #bathroom
             with fade
             Charles "They must be hiding in the bathroom. It is the only one left."
 
@@ -312,22 +311,23 @@ label start:
 
     menu:
         "Turn on the lights":
+            scene bath hotel
             "{i}Charles feels for the lightswitch on the wall and turns it on.  Upon the lights coming on Charles can see the room clearly.{/i}"
 
-    "{i}The bathtub is filled with bloody water, and on the Washbasin mirror: “Your kids are mine!” written in bloody red.{/i}"
+    "{i}The bathtub is filled with bloody water, and on the washbasin mirror: “Your kids are mine!” written in bloody red.{/i}"
 
     Charles "Marge, we should call the police. Right now."
 
-    scene bg room #living room
+    scene lr hotel #living room
     with fade
 
     "{i}Charles and Marge sit on the sofa, anxiously waiting for the arrival of police.{/i}"
 
-    scene bg room #scene with talking to police
+    scene lr hotel #scene with talking to police in hotel room
     with fade
 
 
-    Police "Sir, We have checked every space in your room and collected all evidence we can find."
+    Police "Sir, we have checked every space in your room and collected all evidence we can find."
 
     Marge "Can you find our kids?"
 
@@ -339,14 +339,14 @@ label start:
 
     "{i}The police leave the hotel room leaving Charles and Margaret Alone to themselves{/i}"
 
-    scene bg room #black screen
+    scene black screen #black screen
     with fade
 
     "END OF PART 1"
 
 #ISAAC'S PART
 
-    scene bg room #living room
+    scene lr hotel #living room
     with fade
 
     "{i}After talking with investigators, Margaret and Charles gather their thoughts, as silence between them grows. {/i}"
@@ -420,6 +420,7 @@ label start:
 
         "Confused Margaret" "Who is that?"
         jump llorona_story
+
     label llorona_story:
     Maria "Well she is said to be un fantasma that drowned her two children then herself because of the betrayal of her husband.
     Her husband supposedly returned to his other woman back in Spain and never returned.
@@ -434,7 +435,7 @@ label start:
 
     Charles "Maybe someone was impersonating this woman who took our children!"
 
-    Maria "Well if you think that you should visit my relative, I can tell you where he works, if you are interested"
+    Maria "Well if you think that you should visit my relative, Francisco. I can tell you where he works, if you are interested"
 
     Charles "Yes! Anything to get us closer to finding our children"
 
@@ -452,14 +453,14 @@ label start:
 
     "{i}And soon after their conversation They gather some of their belongings and head out to the address to hopefully get some lead to where their children have gone.{/i}"
 
-    scene bg room #black screen
+    scene black screen #black screen
     with fade
 
     "END OF PART 2"
 
 # BRIAN'S PART
 
-    scene bg room #Francisco's office
+    scene office #Francisco's office
     with fade
 
     define Francisco = Character("Francisco")
@@ -480,7 +481,7 @@ label start:
     label inspect_photo:
         Francisco "Ah, how I miss the good times, when everything seemed simple and I had everything to look forward to still..."
 
-        scene bg room #standing outside a house
+        scene y franciscohome #standing outside a house
         with fade
 
         YoungFrancisco "How do you think he’ll react to being a big brother now Maria"
@@ -501,7 +502,7 @@ label start:
 
         YoungFrancisco "Your mother and I have already named her.  Today, we welcome Sofia into our family."
 
-        scene bg room #francisco's office
+        scene office #francisco's office
         with fade
 
         Francisco "Sofia, Jose, when we were still a family, everything seemed like it was going to work itself out in the end."
@@ -521,7 +522,7 @@ label start:
             Francisco "A basket of goods huh, they really shouldn’t have.  For them, it was just a job that I got paid to do.
             This basket does remind me of a certain picnic many years ago.."
 
-            scene bg room #picnic under a tree
+            scene picnic #picnic under a tree
             with fade
 
             YoungFrancisco "These churros are great! chocolate covered are my favorite! Nothing beats a chocolate churro."
@@ -542,7 +543,7 @@ label start:
 
             YoungFrancisco "Yes Sofia, I’m right here, I’ll always be here for you."
 
-            scene bg room #back in francisco's office
+            scene office #back in francisco's office
             with fade
 
             Francisco "Oh, why did things have to turn out like this, we had our whole lives to look forward to."
@@ -558,7 +559,7 @@ label start:
         "Pick up the toy":
             Francisco "When did this get here.  I don’t have any reason to be hanging onto kid’s toys..."
 
-            scene bg room #francisco's house in the past
+            scene y franciscohome #francisco's house in the past
             with fade
 
             "{i}Francisco frantically running through their house{/i}"
@@ -579,7 +580,7 @@ label start:
 
             #play distant crying noise here
 
-            scene bg room #francisco's office
+            scene office #francisco's office
 
             Francisco "..."
 
@@ -597,7 +598,7 @@ label start:
 
             Francisco "..."
 
-            scene bg room #Young Francisco's house
+            scene y franciscohome #Young Francisco's house
             with fade
 
             #Play gunshot sound here
@@ -607,7 +608,7 @@ label start:
 
             "{i}Younger Francisco frantically searches the house. He searches every room but can’t find her.  The last room he hasn’t checked yet is the children’s bedroom.{/i}"
 
-            scene bg room #outside kids bedroom
+            scene inside franciscohome #outside kids bedroom
             with fade
 
             "{i}Younger Francisco frantically searches the house. He searches every room but can’t find her.
@@ -629,7 +630,7 @@ label start:
 
             "{i}Upon finishing the letter, Francisco breaks down into tears upon the loss of his wife{/i}"
 
-            scene bg room #Francisco's office
+            scene office #Francisco's office
             with fade
 
             Francisco "I’ll avenge my family if it’s the last thing I do.  La Llorona has to pay for what she has done to them."
@@ -642,7 +643,7 @@ label start:
     label part_ending:
     "{i}Francisco is done thinking about the past just as a knock on the door can be heard{/i}"
 
-    scene bg room #black screen
+    scene black screen #black screen
     with fade
 
     "END OF PART 3"
