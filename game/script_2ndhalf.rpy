@@ -421,7 +421,7 @@ label chp2_2:
     "He grabs her hand and reassures that everything will be fine."
     "After a couple of seconds, Margaret catches her breathe and gets out."
 
-    play cry.wav volume 1.0
+    play sound cry.wav volume 1.0
     pause 2
     "SHRIEEEEEEEK"
 
@@ -823,7 +823,7 @@ label chp2_2:
     "Happy to put this nightmare vacation behind them."
 
     scene black screen with fade_pov
-    play cry volume 1.0
+    play sound cry.wav volume 1.0
     pause 3
 
     label end:
