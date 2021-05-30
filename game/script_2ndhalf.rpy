@@ -18,7 +18,159 @@ define fade_chp = Fade(0.5, 1.0, 0.5)
 define fade_pov = Fade(0.5, 0.0, 0.5) #will be used to fade to black for a second
 
 # The game starts here.
+#impementation for minigames#
 
+init python:
+    def get_image_size(d):
+        d = renpy.easy.displayable(d)
+        w, h = renpy.render(d, 0, 0, 0, 0).get_size()
+        w, h = int(round(w)), int(round(h))
+        return w, h
+    class puzzle_piece:
+        def __init__(self, cut, x, y, rotation, name):
+            self.cut = cut
+            self.x = x
+            self.y = y
+            self.rotation = rotation
+            self.iname = name
+            self.name = "0"
+        def rotate(self):
+            if self.rotation < 4:
+                self.rotation += 1
+            else:
+                self.rotation = 1
+        def dropped(self, drags, drop):
+            if drop:
+                self.name = drop.drag_name
+                drags[0].snap(drop.x,drop.y)
+            else:
+                self.name = "0"
+            renpy.restart_interaction()
+
+
+    class puzzle_place:
+        def __init__(self, x, y, name):
+            self.x = x
+            self.y = y
+            self.name = name
+
+    def pipe_reset(trans, st, at):
+        if trans.rotate == 360:
+            trans.rotate = 0
+            return None
+
+    class puzzle_handler:
+        def __init__(self, img, size):
+            self.img = img
+            self.size = size
+            self.map = []
+            self.pieces = []
+            self.framesize = None
+        def init(self):
+            self.map = []
+            self.pieces = []
+            w, h = get_image_size(self.img)
+            rows = w/self.size
+            columns = h/self.size
+            self.framesize = ((rows*self.size)+40, (columns*self.size)+40)
+            n = 0
+
+            for c in range(columns):
+                for r in range(rows):
+                    n += 1
+                    img = Crop((r*self.size, c*self.size, self.size, self.size), self.img)
+                    p = puzzle_piece(img, r, c, 4, str(n))
+                    p.rotation = renpy.random.randint(1, 4)
+                    p.x = renpy.random.randint(-300, 300)
+                    p.y = renpy.random.randint(-300, 300)
+                    self.pieces.append(p)
+                    yo = (c*self.size) - (self.size*columns)/2 + self.size/2
+                    xo = (r*self.size) - (self.size*rows)/2 + self.size/2
+
+                    self.map.append(puzzle_place(xo, yo, str(n)))
+        def calc(self):
+            for i in self.pieces:
+                if not i.name == i.iname or not i.rotation == 4:
+                    return False
+            else:
+                return True
+
+
+
+
+screen puzzle(g):
+    modal True
+
+    on "show" action Function(g.init)
+    if g.framesize:
+        frame:
+            align .5,.5 xysize g.framesize
+            background "#222"
+    draggroup:
+        for i in g.map:
+            drag:
+                draggable False
+                drag_name i.name
+                align .5,.5 offset i.x, i.y
+                frame:
+                    xysize g.size,g.size background None padding 2,2
+                    frame:
+                        background "#333"
+                    # text i.name
+
+        for i in g.pieces:
+            drag:
+                align .5,.5 offset i.x, i.y
+                droppable False
+                clicked Function(i.rotate)
+                dragged i.dropped
+                fixed:
+                    fit_first True
+                    add i.cut at rotate(i.rotation*90) anchor (.5,.5) offset g.size/2,g.size/2
+                    # vbox:
+                    #     align .5,.5
+                    #     text i.name
+                    #     text i.iname
+                    #     text str(i.rotation)
+
+    if g.calc():
+        frame:
+            background "#333" yalign .923 padding 28,28 offset 10,-10
+            text "You have solved it."
+
+
+    hbox:
+        spacing 10 offset 10,-10
+        align 0.0,1.0
+        #button:
+        #    background "#333" padding 20,20
+        #    text "Skip" size 24
+        #    action Hide("puzzle"), Return()
+        button:
+            background "#333" padding 20,20
+            text "Reset" size 24
+            action Function(g.init)
+        if g.calc():
+            button:
+                background "#333" padding 20,20
+                text "Continue" size 24
+                action Hide("puzzle"), Return()
+transform rotate(r):
+
+    subpixel True
+    rotate_pad False
+    ease .2 rotate r
+    function pipe_reset
+
+default puzzle_p = puzzle_handler(
+
+    "puzzle.jpeg",  #if the img is in other format (jpg), change its name#
+    250,                # Size of the pieces [must be an even number]
+)
+
+##End of minigames
+
+#
 label chp2_2:
     #CHAPTER 2.2
     #THE SCENE STARTS FROM THE PERSPECTIVE OF CHARLES AND MARGARET STANDING AT THE FRONT DOOR OF FRANCIS
@@ -177,6 +329,9 @@ label chp2_2:
     "Francisco lays out some papers on his desk and seems to go into a deep state of thought."
 
     #OPTIONAL MINIGAME OPTIONAL MINIGAME OPTIONAL MINIGAME
+    "Let's find where they are."
+    window hide
+    call screen puzzle(puzzle_p)
 
     f "...that’s it. That’s it"
 

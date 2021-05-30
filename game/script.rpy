@@ -11,6 +11,9 @@ define Mikey = Character("Michael")
 define Police = Character("Policeman")
 define Maria = Character("Maria")
 
+
+
+
 # The game starts here.
 #WHEN ONE CHARACTER IS TALKING HIDE THE OTHER CHARACTERS
 label start:
