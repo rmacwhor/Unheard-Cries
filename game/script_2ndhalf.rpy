@@ -176,17 +176,21 @@ label chp2_2:
     #THE SCENE STARTS FROM THE PERSPECTIVE OF CHARLES AND MARGARET STANDING AT THE FRONT DOOR OF FRANCIS
     scene front door #front door
     "Margaret approaches the door and is about to knock on it..."
+    show marge
     ma "..."
 
     "...but there's a moment of hesitation."
+    hide marge
 
     c"... Marge?"
 
     "She looks scared."
-
+    show charles
     c "Margaret, what are you waiting for?"
     c "We don’t have all the time in the world here."
+    hide charles
 
+    show marge
     ma "I’m- I’m sorry, I..."
 
     "Marge sighs."
@@ -198,6 +202,7 @@ label chp2_2:
     ma "Or, what if they already found them, and..."
     ma "they’re..."
     ma "they’re not..."
+    hide marge
 
     "The words get caught in Marge’s throat, as she starts choking up, tears welling in her eyes."
 
@@ -206,6 +211,7 @@ label chp2_2:
             "Charles rushes in to embrace her, causing her to break down into mournful sobs"
             "He pulls her in close, letting her cry into his shoulder"
 
+            show charles
             c "It’s okay, Marge."
             c "I know you’re scared."
             c "I’m… I’m scared, too."
@@ -213,35 +219,41 @@ label chp2_2:
             c "I was so focused on my work that I didn’t realize how much I’ve been neglecting them."
             c "I need to play trains with Michael and… give Lisa some guidance."
             c "That’s why we’re going to find them. No matter what."
-
+            hide charles
+            show marge
             ma "Can we trust him, though?"
             ma "Does he really care about our children, or does he only care about that ridiculous urban legend?"
-
+            hide marge
+            show charles
             c "We don’t have anyone else we can trust."
             c "His intentions may be..."
             c "uncertain"
             c "but he knows more about La Llorona than anyone else in this city."
             c "He’s our only chance at finding our kids again. It’s him or no one."
-
+            hide charles
+            show marge
             ma "Right… thank you."
-
+            hide marge
             "Marge finally pulls away, wiping her face with her arm."
 
             "Marge, feeling better, finally knocks on the door."
 
 
         "Tell her to calm down":
+            show charles
             c "Margaret, calm down."
             c "We need to talk with Francisco as soon as possible."
             c "We can’t do that if you’re acting hysterical in front of him."
             c "Pull yourself together!"
+            hide charles
 
             "Marge sniffles, shaking her head."
-
+            show marge
             ma "I- I’m really sorry."
             ma "I don’t know what got into me there."
             ma "I’m- I’m fine now."
             ma "It’s okay. We’ll be okay."
+            hide marge
 
             "Marge, hiding her anxiety, finally knocks on the door."
 
@@ -249,133 +261,214 @@ label chp2_2:
     f "Pase."
 
     "Marge and Charles look at each other, confusedly."
-
+    show marge
     ma "I… guess that means come in?"
-
+    hide marge
     "Marge opens the door and walks into Francisco’s office, with Charles following close behind."
 
     scene office with fade_pov #change background to francisco's office
     "Francisco, holding a picture in his hand, places it aside on his desk and looks up at the two visitors."
-
+    show francisco
     f "Hola, ¿cómo puedo ayuda- ah."
     f "Lo siento- sorry, I’m not used to tourists visiting my office."
     f "Mr. and Mrs. LAST NAME, it’s good to see you two."
     f "Take a seat."
-
+    hide francisco
     "Charles and Marge both sit down at the two chairs opposite Francisco, though Marge is far more reluctant to do so."
-
+    show francisco
     f "To start off with, I want to offer my condolences."
     f "I know that this is a very stressful situation for the both of you."
     f "This, unfortunately, isn’t the first time La Llorona has struck."
     f "But rest assured that I will do everything in my power to make this the last time."
     f "The good news is that there is something unique about your case that might help us."
-
+    hide francisco
+    show charles
     c "What do you mean?"
-
+    hide charles
+    show francisco
     f "La Llorona has haunted Mexico City for years now."
     f "But this is the first time that it has attacked turistas- tourists such as yourself."
     f "There has to be a reason for this."
     f "And once we determine what that reason is, we will find La Llorona."
-
+    hide francisco
+    show marge
     ma "Whatever you need from us, we will gladly provide."
     ma "It’s the least we can do."
-
+    hide marge
     default explain = 0
+    default repeat1 = 0
+    default repeat2 = 0
+    default repeat3 = 0
     #can be revised later to check for repeat choice or find a way to delete options
     label Michael:
     menu:
         "He loves trains":
-            "ADD SOMETHING"
-            $ explain += 1
-            if explain != 3:
-                jump Michael
-        "He loves his mom":
-            "ADD SOMETHING"
-            $ explain += 1
-            if explain != 3:
-                jump Michael
-        "He scares too easily":
-            "ADD SOMETHING"
-            $ explain += 1
-            if explain != 3:
-                jump Michael
+            if repeat1 == 0:
+                $ repeat1 += 1
+                show charles
+                "ADD SOMETHING"
+                hide charles
+                $ explain += 1
+                if explain != 3:
+                    jump Michael
+                jump end_micheal
+            show francisco
+            f "You've said that already"
+            hide francisco
+            jump Michael
 
+        "He loves his mom":
+            if repeat2 == 0:
+                $ repeat2 += 1
+                show charles
+                "ADD SOMETHING"
+                hide charles
+                $ explain += 1
+                if explain != 3:
+                    jump Michael
+                jump end_micheal
+            show francisco
+            f "You've said that already"
+            hide francisco
+            jump Michael
+
+        "He scares too easily":
+            if repeat3 == 0:
+                $ repeat3 += 1
+                show charles
+                "ADD SOMETHING"
+                hide charles
+                $ explain += 1
+                if explain != 3:
+                    jump Michael
+                jump end_micheal
+            show francisco
+            f "You've said that already"
+            hide francisco
+            jump Michael
+
+    label end_micheal:
     $ explain = 0
+    $ repeat1 = 0
+    $ repeat2 = 0
+    $ repeat3 =0
     f "And your daughter... Lisa... how is she?"
 
     label lisa:
     menu:
         "A great caretaker":
-            "ADD SOMETHING"
-            $ explain += 1
-            if explain != 3:
-                jump lisa
+            if repeat1 == 0:
+                $ repeat1 += 1
+                show charles
+                "ADD SOMETHING"
+                hide charles
+                $ explain += 1
+                if explain != 3:
+                    jump lisa
+                jump end_lisa
+            show francisco
+            f "You've said that already"
+            hide francisco
+            jump lisa
         "Going through a phase":
-            "ADD SOMETHING"
-            $ explain += 1
-            if explain != 3:
-                jump lisa
+            if repeat2 == 0:
+                $ repeat2 += 1
+                show charles
+                "ADD SOMETHING"
+                hide charles
+                $ explain += 1
+                if explain != 3:
+                    jump lisa
+                jump end_lisa
+            show francisco
+            f "You've said that already"
+            hide francisco
+            jump lisa
         "Needs to be womanly":
-            "ADD SOMETHING"
-            $ explain += 1
-            if explain != 3:
-                jump lisa
+            if repeat3 == 0:
+                $ repeat3 += 1
+                show charles
+                "ADD SOMETHING"
+                hide charles
+                $ explain += 1
+                if explain != 3:
+                    jump lisa
+                jump end_lisa
+            show francisco
+            f "You've said that already"
+            hide francisco
+            jump lisa
 
+    label end_lisa:
     $ explain = 0
+    $ explain = 0
+    $ repeat1 = 0
+    $ repeat2 = 0
+    $ repeat3 =0
+    show francisco
     f "Thank you for sharing all this."
     f "Give me a moment while I look over the evidence."
-
+    hide francisco
     "Francisco lays out some papers on his desk and seems to go into a deep state of thought."
 
     #OPTIONAL MINIGAME OPTIONAL MINIGAME OPTIONAL MINIGAME
     "Let's find where they are."
     window hide
     call screen puzzle(puzzle_p)
-
+    show francisco
     f "...that’s it. That’s it"
-
+    hide francisco
+    show marge
     ma "Did you find something, Francisco?"
     ma "Did you find our children?"
-
+    hide marge
+    show francisco
     f "Dime, did you visit Lake Nabor Carrillo?"
-
+    hide francisco
+    show charles
     c "Yes, yes we did."
     c "But what does that have to-"
     c "wait… a lake…"
-
+    hide charles
+    show francisco
     f "Exactly. And every victim to date has visited that lake."
     f "Which means… yes… haha… HAHAHAHAHAHA!"
-
+    hide francisco
     "Francisco breaks into a fit of borderline maniacal laughter which seems to go on forever."
     "Charles and Marge look at each other with a mix of confusion and concern."
-
+    show marge
     ma "Francisco, are you… are you all right?"
-
-
+    hide marge
+    show francisco
     f "Oh, believe me, I am feeling fantástico!"
     f "Finally, after so many years, I have figured it out!"
-
+    hide francisco
     "Francisco finally calms himself down, taking a deep breath."
     "He stares at Charles and Marge, smirking."
-
+    show francisco
     f "Mr. and Mrs. LAST NAME. I have a plan."
     f "And when that plan succeeds I promise you that we will get back your children safe and sound."
 
     f "{i}La Llorona… demonia… morirás por lo que le hiciste a mi familia.{/i}"
-
-    scene puzzle with fade_chp #CHAPTER 2.2 END and background for lake
+    hide francisco
+    scene black with fade_chp
+    "END OF PART 4"
+    scene night lake with fade_chp #CHAPTER 2.2 END and background for lake
 
     "{i}Michael and Lisa are under La Llorona's trance.{\i}"
-
+    show mikey at left
+    show lisa at right
     mi "..."
 
     l "..."
-
+    hide lisa
+    hide mikey
     #show them with eye lifeless in art
-
+    show llorona
     "A loud shriek fills the air and slowly dies down to crying..."
-
+    hide llorona
     scene office with fade_pov #switch back to office
+    show francisco
     f "Ok muchachos, here's the plan."
 
     f "We know La Llorona is at Lake Nabor Carrillo."
@@ -383,50 +476,65 @@ label chp2_2:
     f "If your children are alive, they should be there."
 
     f "Charles, you will help me fight La Llorona."
-
+    hide francisco
+    show charles
     c "...fight?"
     c "Is that even possible."
-
+    hide charles
+    show francisco
     f "Wrong choice of words."
     f "I meant to say we'll distract her with this."
-
+    hide francisco
     "Francisco passes notes and a crucifix to Charles."
-
+    show francisco
     f "Those verses and crucifix could potentially harm the demon."
     f "Use this to divert its attention."
-
+    hide francisco
+    show charles
     c "How do you know this will be any effective against it?"
-
+    hide charles
+    show francisco
     f "Trial and error..."
     f "While La Llorona is distracted, Margaret will run to your children and try to wake them out of her spell."
-
+    hide francisco
+    show charles
     c "Okay"
-
+    hide charles
+    show marge
     ma "What happens if I can’t break the spell?"
-
+    hide marge
+    show francisco
     f "Then your kids will die."
-
+    hide francisco
+    show charles at left
+    show marge at right
     c "..."
 
     ma "..."
-
+    hide charles
+    hide marge
+    show francisco
     f "Go get ready. We leave now."
-
+    hide francisco
     scene roadside with fade_chp
     #switch back to roadside background
-
+    show francisco
     f "We are here. Get out of the car quietly"
-
+    hide francisco
     "Charles leaves the car but sees Margaret having trouble calming down."
     "He grabs her hand and reassures that everything will be fine."
     "After a couple of seconds, Margaret catches her breathe and gets out."
+    scene night lake with fade_chp
+    "The group approaches the lake un suddenly..."
 
-    play sound cry.wav volume 1.0
+    play sound "cry.wav" volume 1.0
     pause 2
     "SHRIEEEEEEEK"
-
+    show marge
     ma "Oh my god did you guys here that?"
     ma "Is that her?"
+    hide marge
+    show llorona
     #wipe the screen to show only the bg
     f "Mira. Look There is." #show llorona
 
@@ -434,20 +542,23 @@ label chp2_2:
 
     "Marge gasps"
     ma "Over there." #show mikey and lisa in the opposite side of screen from llorona
-
+    show lisa at left
+    show mikey at right
     f "Charles. Are you ready?"
 
     c "Yes. Let's do it."
 
     f "Ok."
     f "Tres."
-    pause 1
     f "Dos."
-    pause 1
     f "Uno."
-    pause 1
     f "GO!"
+    hide lisa
+    hide mikey
+    hide llorona
 
+    scene black with fade_chp
+    "END OF PART 5"
     scene night lake with fade_chp #reset the screen with only bg of lake
 
     #CHAPTER 3.2
@@ -474,37 +585,48 @@ label chp2_2:
             jump end
     menu:
         "Wake Michael":
+            show marge
+            show mikey at right
             ma "Mikey wake up!! It’s me! Mommy is here! Wake up!!"
             "Michael remains unresponsive."
+            hide marge
+            hide mikey
             $ mistake += 1
             jump kid_choice
 
         "Wake Lisa":
+            show marge
+            show lisa at right
             ma "Lisa! Lisa dear please tell me you can hear me!!! Please..."
             "Lisa remains unresponsive..."
+            hide marge
+            hide lisa
             $ mistake = 0
-
+    show lisa
     l "Mom...?"
-
+    hide lisa
+    show marge
     ma "Lisa! Wake up please!!!"
-
+    hide marge
     "Suddenly her eyes return to life."
-
-    l "MOM! What’s going on! Where’s the monster?"
+    show lisa
+    l "MOM! What’s going on! Where’s the monster?" with hpunch
+    hide lisa
 
     "Margaret hugs Lisa, relieved that she’s recovered from her trance."
-
+    show marge
     ma "We don’t have time for questions. We need to wake up Mikey before it comes back"
-
+    hide marge
     "Lisa quickly scans the situation and manages to put the pieces together."
     "Without asking anymore questions, she tries to help Margaret break Michael’s trance."
     "The two try to recall many of Michael’s fond memories to jerk a reaction."
 
     with fade_pov
-
-    "{i}This is insane...{/i}"
+    show charles
+    c "{i}This is insane...{/i}"
 
     c "Isn’t there a better way to hold this thing off!?!?"
+    hide charles
     "Charles screams towards Francisco"
 
     "Llorona swings her right arm towards Charles."
@@ -523,15 +645,17 @@ label chp2_2:
             "Charles quickly ducks right to avoid the attack."
             "Luckily the swing goes over his head. Seeing this chance he jumps back to create distance"
 
+    show francisco
     f "There’s not much we can do! This spirit is powerful!"
+    hide francisco
     "Francisco raises the cross and starts muttering something under his breath."
 
     "Reacting to Francisco's chants, Llorona screams again."
 
     "It rushes for Francisco but he manages to avoid her attack"
-
+    show francisco
     f "Pull her off me Charles!"
-
+    hide francisco
     "Charles begins to chant a verse."
 
     "The chant pulls Llorona's attention and she rushes Michael."
@@ -550,10 +674,10 @@ label chp2_2:
                 "The pain becomes too excrutiating for Charles."
                 "Unable to stand, Llorona grabs Michael and drags him towards the Lake"
                 "Despite Francisco's efforts, he cannot save Michael"
-                "{i}...Margaret... kids... I'm... so-{/i}"
-                with drown
+                show charles
+                c "{i}...Margaret... kids... I'm... so-{/i}"
+                scene underwater with drown
                 #change background to under water during night
-                scene underwater
                 "His thoughts are drowned by sudden water."
                 "BAD END"
                 jump end
@@ -568,9 +692,9 @@ label chp2_2:
     "Charles expected to see Llorona rage again... however the sight surprised him."
 
     "Llorona seemed to be in pain. Every syllable from Francisco forces her to flinch."
-
+    show francisco
     f "...it is possible..."
-
+    hide francisco
     "Seeing this opportunity, Charles begins to chant louder as well."
 
     "Unable to handle the chanting, Llorona approaches Charles to try and silence him."
@@ -588,10 +712,10 @@ label chp2_2:
                 "The pain becomes too excrutiating for Charles."
                 "Unable to stand, Llorona grabs Michael and drags him towards the Lake"
                 "Despite Francisco's efforts, he cannot save Michael"
-                "{i}...Margaret... kids... I'm... so-{/i}"
-                with drown
+                show charles
+                c "{i}...Margaret... kids... I'm... so-{/i}"
+                scene underwater with drown
                 #change background to under water during night
-                scene underwater
                 "His thoughts are drowned by sudden water."
                 "BAD END"
                 jump end
@@ -619,6 +743,7 @@ label chp2_2:
     menu:
         "Stop Llorona":
             "Charles runs in front of the demon and raises the crucifix towards her."
+            with hurt
             with hpunch
             "Angered by his actions, Llorona knocks Charles to the side. "
         "Let her go":
@@ -638,12 +763,13 @@ label chp2_2:
     "Llorona’s wail pierced through the night sky."
     "Both Margaret and Lisa cover their ears to try and block out her shriek."
     "As the shriek died down, Margaret hears someone whimpering,"
-
-    ma "...Mom…"
-
+    show mikey
+    mi "...Mom…"
+    hide mikey
     "Suddenly Margaret feels someone hug her tightly around her waist, a small warmness could be felt on her stomach."
-
+    show marge
     ma "...Mikey."
+    hide marge
     "She says softly."
 
     "Michael was crying, hugging Margaret as hard as he could whilst saying “Mom” the entire time."
@@ -654,23 +780,23 @@ label chp2_2:
     "However, she sees that whatever was holding her back is suddenly waning in power."
     "...it inches ever closer to the detective."
     "Looking towards the lakeside she sees Charles, beaten and bleeding, signaling them to come over."
-
+    show marge
     ma "...Let's go… I promise that I won’t lose track of you two again."
-
+    hide marge
     "She grabs Lisa and Michael’s hands and makes her way towards Charles."
     "As soon as Margaret and the kids return to land, Charles comes up to the two and hugs them tightly."
     "He then carries Michael whose legs are shaking terribly."
-
+    show charles
     c "Go on ahead first with the kids."
-
+    hide charles
     "Margaret takes Michael from Charles and begins making her way back to the van."
-
+    show lisa
     l "Dad… please come back..."
-
+    hide lisa
     "Charles pats Lisa’s head to comfort her."
-
-    mi "Don’t worry… I promise I’ll be back."
-
+    show charles
+    c "Don’t worry… I promise I’ll be back."
+    hide charles
     "Lisa follows Margaret."
 
     with fade_pov
@@ -685,45 +811,57 @@ label chp2_2:
     "SADNESS"
     "...in each of his words."
     "With the crucifix in hand, Charles hurries to Francisco-"
-
+    show francisco
     f "LEAVE CHARLES."
-
+    hide francisco
+    show charles
     c  "We need to go!"
-
+    hide charles
+    show francisco
     f "No no no… I’m so close…. So close… look at it! LOOK AT IT! IT’S SCARED OF ME."
-
+    hide francisco
     "Despite his claims, Llorona manages to inch her way towards Francisco."
     "Seeing this, the detective screams his chants even louder."
     "With each chant, the ghost is forced to back away whilst Francisco continues to move towards Llorona."
-
+    show francisco
     f "no me queda nada..."
     f "¡ME TOMASTE TODO!" with hpunch
+    hide francisco
     menu:
         "Convince Francisco":
+            show charles
             c "We can’t be sure that this will make her disappear for good! This is too dangerous!"
-
+            hide charles
+            show francisco at left
             f "LOOK AT IT! IT’S SCARED! I’LL MAKE SURE IT DIES!" with hpunch
             "The detective takes another step towards the ghost..."
             "...not noticing that he is knee deep in water."
+            hide francisco
         "Leave Francisco":
             jump leave_francisco
     menu:
         "Convince Francisco":
             "Charles notices a smile from Llorona."
+            show charles
             c "FRANCISCO YOU’RE FALLING FOR HER TRAP!"
-
+            hide charles
+            show francisco
             f "NO IT WILL DIE BEFORE I DO! I’LL MAKE SURE OF IT" with hpunch
             "The detective takes another step towards the ghost..."
             "...not noticing that he is waist deep in water."
+            hide francisco
         "Leave Francisco":
             jump leave_francisco
     menu:
         "Convince Francisco":
+            show charles
             c "WAKE UP FRANCISCO."
-
+            hide charles
+            show francisco at right
             f "I’M AWAKE CHARLES. THIS IS NO DREAM. I WILL AVENGE MY FAMILY." with hpunch
             "The detective takes another step towards the ghost..."
             "...not noticing that he is waist deep in water."
+            hide francisco
         "Leave Francisco":
             jump leave_francisco
 
@@ -738,30 +876,36 @@ label chp2_2:
     "...floating along the water."
     "All was still and the night silent."
     "As if nothing happened."
-    scene puzzle with fade_chp
+    scene night lake with fade_chp
     menu:
         "Leave Francisco":
-            "{i}Damn...{/i}"
+            show charles
+            c "{i}Damn...{/i}"
 
     label leave_francisco:
     "{i}I should've known... he was a lost cause...{/i}"
+    hide charles
 
     #CONCLUSIONS
+    scene black with fade_chp
+    "END PART 6"
     #background should be by roadside next to car/van
     scene roadside with fade_chp
 
     "Charles returns to Marge and the kids"
-
+    show marge
     ma "Where’s Francisco?"
-
+    hide marge
     "Charles shakes his head"
-
+    show marge
     ma "Oh my god"
-
+    hide marge
+    show mikey
     mi "What’s wrong?"
-
+    hide mikey
+    show charles
     c "It's nothing, Mikey. Let’s go home."
-
+    hide charles
     #background should be hotel with characters in the shot
     scene lr hotel with fade_pov
     "After the hellish encounter with la Llorona, the Reed family returns to the hotel, catching up with each other over the last few days of their vacation"
@@ -771,33 +915,41 @@ label chp2_2:
 
     #background of interrogation room
     scene interro with fade_pov
+    show police
     police "Mr.Reed could you explain again how you found your children?"
-
+    hide police
+    show charles
     c "I already told you guys everything..."
     c "We went and rescued them from La Llorona before she was able to drown them in the lake."
-
+    hide charles
+    show police
     "The policeman sighs"
     police "Sir, respectfully, La Llorona is just a myth parents tell their kids so that they don’t stay out late at night."
-
+    hide police
+    show charles
     c "Hey, I’m just telling the truth, whether you choose to believe it or not is not my problem."
-
+    hide charles
+    show police
     police "Ok, then can you tell us more about what happened to Francisco"
-
+    hide police
+    show charles
     c "After he was pulled into the water, we don’t know what happened to him."
     c "All we saw was his cross float to the surface of the water and nothing else."
-
+    hide charles
+    show police
     police "Charles, don’t lie to me."
     police "The delegacion (precinct) knows that Francisco most likely played a part in kidnapping your kids and had an ulterior motive."
     police "Stop protecting him and tell us where he is."
-
+    hide police
+    show charles
     c "For the last time, he drowned in Lake Nabor Carrillo!" with hpunch
     c "If that’s all you’re going to ask me, then I think this interview is finished"
-
+    hide charles
     "Charles stands from his chair and walks to the door"
-
+    show police
     police "Ok, well we’re all happy you got your children back."
     police "Stay safe and don’t let this happen again."
-
+    hide police
     scene black with fade_pov
     "Charles leaves the room and is greeted by his family who are waiting for him"
     "After picking themselves up, they take a taxi to the airport"
@@ -805,26 +957,29 @@ label chp2_2:
     #background of airport
     scene leave airport with fade_pov#replace
     "At the airport"
-
+    show marge
     ma "Michael, do you have your train? You didn’t forget it at the hotel right?"
-
-    ma "Yes mom I have it right here"
-
+    hide marge
+    show mikey
+    mi "Yes mom I have it right here"
+    hide mikey
     "Michael shows the toy train to Margaret"
-
+    show lisa
     l "I’m just happy we can finally go home."
-
+    hide lisa
+    show charles
     c "Surprisingly, being back home might be more relaxing than our vacation."
-
+    hide charles
+    show marge
     ma" You said it honey. This has to have been the most stressful vacation in history"
-
+    hide marge
     "The Reeds continue to talk amongst themselves as they walk towards their gate."
     "Eventually the family boards the plane and are waiting for it to take off."
     "Happy to put this nightmare vacation behind them."
 
     scene black screen with fade_pov
-    play sound cry.wav volume 1.0
-    pause 3
+    play sound "cry.wav" volume 1.0
+    "END"
 
     label end:
     return
