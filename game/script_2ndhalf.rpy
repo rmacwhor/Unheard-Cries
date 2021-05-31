@@ -174,8 +174,7 @@ default puzzle_p = puzzle_handler(
 label chp2_2:
     #CHAPTER 2.2
     #THE SCENE STARTS FROM THE PERSPECTIVE OF CHARLES AND MARGARET STANDING AT THE FRONT DOOR OF FRANCIS
-    scene bg room #front door
-    "CHARLES POV"
+    scene front door #front door
     "Margaret approaches the door and is about to knock on it..."
     ma "..."
 
@@ -255,7 +254,7 @@ label chp2_2:
 
     "Marge opens the door and walks into Francisco’s office, with Charles following close behind."
 
-    scene bg room with fade_pov #change background to francisco's room
+    scene office with fade_pov #change background to francisco's office
     "Francisco, holding a picture in his hand, places it aside on his desk and looks up at the two visitors."
 
     f "Hola, ¿cómo puedo ayuda- ah."
@@ -283,23 +282,23 @@ label chp2_2:
 
     default explain = 0
     #can be revised later to check for repeat choice or find a way to delete options
-    label micheal:
+    label Michael:
     menu:
         "He loves trains":
             "ADD SOMETHING"
             $ explain += 1
             if explain != 3:
-                jump micheal
+                jump Michael
         "He loves his mom":
             "ADD SOMETHING"
             $ explain += 1
             if explain != 3:
-                jump micheal
+                jump Michael
         "He scares too easily":
             "ADD SOMETHING"
             $ explain += 1
             if explain != 3:
-                jump micheal
+                jump Michael
 
     $ explain = 0
     f "And your daughter... Lisa... how is she?"
@@ -364,7 +363,9 @@ label chp2_2:
 
     f "{i}La Llorona… demonia… morirás por lo que le hiciste a mi familia.{/i}"
 
-    scene bg room with fade_chp  #CHAPTER 2.2 END and background for lake
+    scene puzzle with fade_chp #CHAPTER 2.2 END and background for lake
+
+    "{i}Michael and Lisa are under La Llorona's trance.{\i}"
 
     mi "..."
 
@@ -374,8 +375,7 @@ label chp2_2:
 
     "A loud shriek fills the air and slowly dies down to crying..."
 
-    scene bg room with fade_pov #switch back to office
-    "CHARLES POV"
+    scene office with fade_pov #switch back to office
     f "Ok muchachos, here's the plan."
 
     f "We know La Llorona is at Lake Nabor Carrillo."
@@ -412,8 +412,8 @@ label chp2_2:
 
     f "Go get ready. We leave now."
 
-    scene bg room with fade_chp
-    #switch back to lake background
+    scene roadside with fade_chp
+    #switch back to roadside background
 
     f "We are here. Get out of the car quietly"
 
@@ -421,8 +421,9 @@ label chp2_2:
     "He grabs her hand and reassures that everything will be fine."
     "After a couple of seconds, Margaret catches her breathe and gets out."
 
-    "SHRIEK"
-    #could play that shriek/scream sound here too
+    play sound cry.wav volume 1.0
+    pause 2
+    "SHRIEEEEEEEK"
 
     ma "Oh my god did you guys here that?"
     ma "Is that her?"
@@ -440,19 +441,17 @@ label chp2_2:
 
     f "Ok."
     f "Tres."
+    pause 1
     f "Dos."
+    pause 1
     f "Uno."
+    pause 1
     f "GO!"
 
-    scene bg room with fade_chp #reset the screen with only bg of lake
+    scene night lake with fade_chp #reset the screen with only bg of lake
 
     #CHAPTER 3.2
-    #screen wipe with only the background
-    #background should be by the lakeside at night time
-    #possible to just keep the background for this entire chapter
-    #just fade to black between character POV transition
     #CHAPTER 3.2
-    "MARGARET POV"
 
     "Charles and Francisco bolt towards La Llorona."
     "She whips her head around. Her face twists into a pure rage and a loud shriek escapes her."
@@ -468,9 +467,9 @@ label chp2_2:
             "LLorona's attention returns back to the children"
             "Noticing Margaret shaking one of the children she flies back to them."
 
-            "Unable to stop LLorona, Francisco and Micheal can only watch the demon pull a screaming Margaret deeper in the lake.."
+            "Unable to stop LLorona, Francisco and Michael can only watch the demon pull a screaming Margaret deeper in the lake.."
             "...the kids willingly following behind..."
-            "The lake becomes still... but Micheal's agonized scream can be through the night."
+            "The lake becomes still... but Michael's agonized scream can be through the night."
             "BAD END"
             jump end
     menu:
@@ -502,7 +501,6 @@ label chp2_2:
     "The two try to recall many of Michael’s fond memories to jerk a reaction."
 
     with fade_pov
-    "CHARLES POV"
 
     "{i}This is insane...{/i}"
 
@@ -536,7 +534,7 @@ label chp2_2:
 
     "Charles begins to chant a verse."
 
-    "The chant pulls Llorona's attention and she rushes Micheal."
+    "The chant pulls Llorona's attention and she rushes Michael."
     "Llorona swings her left arm towards Charles."
     menu:
         "Duck Right":
@@ -550,11 +548,12 @@ label chp2_2:
             $ mistake += 1
             if mistake >= 2:
                 "The pain becomes too excrutiating for Charles."
-                "Unable to stand, Llorona grabs Micheal and drags him towards the Lake"
-                "Despite Francisco's efforts, he cannot save Micheal"
+                "Unable to stand, Llorona grabs Michael and drags him towards the Lake"
+                "Despite Francisco's efforts, he cannot save Michael"
                 "{i}...Margaret... kids... I'm... so-{/i}"
                 with drown
                 #change background to under water during night
+                scene underwater
                 "His thoughts are drowned by sudden water."
                 "BAD END"
                 jump end
@@ -587,11 +586,12 @@ label chp2_2:
             $ mistake += 1
             if mistake >= 2:
                 "The pain becomes too excrutiating for Charles."
-                "Unable to stand, Llorona grabs Micheal and drags him towards the Lake"
-                "Despite Francisco's efforts, he cannot save Micheal"
+                "Unable to stand, Llorona grabs Michael and drags him towards the Lake"
+                "Despite Francisco's efforts, he cannot save Michael"
                 "{i}...Margaret... kids... I'm... so-{/i}"
                 with drown
                 #change background to under water during night
+                scene underwater
                 "His thoughts are drowned by sudden water."
                 "BAD END"
                 jump end
@@ -732,23 +732,23 @@ label chp2_2:
     "Despite wanting to help the detective, Michael is too frightened to enter the water."
     "The water continues to thrash around where the detective used to be."
     #bg should be just pic of water
+    scene calm water
     "Suddenly the water comes to a still..."
-    #same image of water but with crucifix floating now
     "...and Francisco's crucifix emerges..."
     "...floating along the water."
     "All was still and the night silent."
     "As if nothing happened."
-    #back to lake bg
+    scene puzzle with fade_chp
     menu:
         "Leave Francisco":
-            "{i}Fuck...{/i}"
+            "{i}Damn...{/i}"
 
     label leave_francisco:
     "{i}I should've known... he was a lost cause...{/i}"
 
     #CONCLUSIONS
     #background should be by roadside next to car/van
-    scene bg room with fade_chp
+    scene roadside with fade_chp
 
     "Charles returns to Marge and the kids"
 
@@ -762,15 +762,15 @@ label chp2_2:
 
     c "It's nothing, Mikey. Let’s go home."
 
-    #background should  be hotel with characters in the shot
-    scene bg room with fade_pov
+    #background should be hotel with characters in the shot
+    scene lr hotel with fade_pov
     "After the hellish encounter with la Llorona, the Reed family returns to the hotel, catching up with each other over the last few days of their vacation"
 
-    scene black with fade_pov
+    scene black screen with fade_pov
     "On the last day before they are about to go to the airport"
 
-    #background of interogation room
-    scene bg room with fade_pov
+    #background of interrogation room
+    scene interro with fade_pov
     police "Mr.Reed could you explain again how you found your children?"
 
     c "I already told you guys everything..."
@@ -803,7 +803,7 @@ label chp2_2:
     "After picking themselves up, they take a taxi to the airport"
 
     #background of airport
-    scene bg room with fade_pov#replace
+    scene leave airport with fade_pov#replace
     "At the airport"
 
     ma "Michael, do you have your train? You didn’t forget it at the hotel right?"
@@ -822,8 +822,9 @@ label chp2_2:
     "Eventually the family boards the plane and are waiting for it to take off."
     "Happy to put this nightmare vacation behind them."
 
-    scene black with fade_pov
-    #play Llorona audio screech
+    scene black screen with fade_pov
+    play sound cry.wav volume 1.0
+    pause 3
 
     label end:
     return
