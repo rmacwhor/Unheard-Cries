@@ -126,11 +126,15 @@ label start:
     hide charles #clear the scene
     "Lisa and Michael" "Fineee"
 
-    scene anthro museum #Montage 1
-    with fade
-
-    scene lr hotel #back at the hotel at the end of montage
-    with fade
+    "After they dropped off their luggage at the hotel..."
+    scene anthro museum with fade #Montage 1
+    #back at the hotel at the end of montage
+    "... the family went to see a museum."
+    show lisa
+    show mikey at right
+    show marge at left
+    pause 5
+    scene lr hotel with fade
 
     play sound "cry.wav" volume 0.3
     pause 3
@@ -158,17 +162,17 @@ label start:
     hide marge
 
     "The pair goes back to sleep"
-
-    scene chap castle #Montage 2
-    with fade
-
-    scene lr hotel #back at the hotel at the end of montage
-    with fade
+    "The next day..."
+    scene chap castle with fade #Montage 2
+    "... They went to see the castle."
+    pause 4
+    scene lr hotel with fade #back at the hotel at the end of montage
 
     play sound "cry.wav" volume 0.6
+    pause 3
 
     show charles #Charles
-    "Charles (to Margaret quietly)" "Marge, Marge. Did you hear that? Was that the crying noise you heard last night?"
+    "Charles" "Marge, Marge. Did you hear that? Was that the crying noise you heard last night?"
 
     Charles "Does Mikey usually have this many nightmares?"
     hide charles#clear the scene
@@ -188,11 +192,11 @@ label start:
     Marge "Yeah, we’ll do that."
     hide marge
 
-    scene art palace #Montage 3
-    with fade
-
-    scene lr hotel #back at the hotel at the end of montage
-    with fade
+    "On the third day..."
+    scene art palace with fade #Montage 3
+    "... they explored the town"
+    pause 4
+    scene lr hotel with fade#back at the hotel at the end of montage
 
     show marge #Marge
     Marge "Did anyone else file a noise complaint for last night?"
@@ -216,6 +220,7 @@ label start:
 
     #Clear the scene
     play sound "cry.wav" volume 1.0
+    pause 3
 
     show charles #Charles
     Charles "There it is again, it's even louder than yesterday"
@@ -346,9 +351,9 @@ label start:
 
     "{i}Charles opens the door.{/i}"
 
-    show charles
+
     Charles "Kids, we found you!"
-    hide charles
+
 
     "{i}The bathroom is in the dark, and there is a strange smell in the air.{/i}"
 
@@ -655,7 +660,7 @@ label start:
             hide sofia
 
             show julia
-            Julia "Oh my gosh, Sofia just spoke her first word!.  It sounds like she was trying to say papa"
+            Julia "Oh my gosh, Sofia just spoke her first word!  It sounds like she was trying to say papa"
             hide julia
 
             show jose
@@ -663,7 +668,7 @@ label start:
             hide jose
 
             show sofia
-            Sofia "Papa!. Papa!"
+            Sofia "Papa! Papa!"
             hide sofia
 
             show young_francisco
@@ -724,6 +729,7 @@ label start:
             hide julia
 
             play sound "cry.wav" volume 0.3
+            pause 3
 
             scene office #francisco's office
 
@@ -770,8 +776,9 @@ label start:
 
             "{i}“Francisco my darling, you said everything would be fine.
             It’s been three months since our children have disappeared.
-            Your faith in the police was misguided as they’ve given up the search and declared them dead.
-            I’ve decided to search for our children myself.  Don’t look for me as it will be easy to find me.
+            Your faith in the police was misguided as they’ve given up the search and declared them dead.{/i}"
+
+            "{i}I’ve decided to search for our children myself.  Don’t look for me as it will be easy to find me.
             Our neighbors have told me they heard of similar occurrences and the cause is La Llorona.
             I’ll find her myself and rescue our children”{/i}"
 
