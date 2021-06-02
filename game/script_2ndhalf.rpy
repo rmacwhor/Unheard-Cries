@@ -306,7 +306,8 @@ label chp2_2:
             if repeat1 == 0:
                 $ repeat1 += 1
                 show charles
-                "ADD SOMETHING"
+                c "Mikey always carries his favorite train everywhere."
+                c "It was quite an issue when he threw a tantrum saying he left his train by Lake Nabor."
                 hide charles
                 $ explain += 1
                 if explain != 3:
@@ -321,7 +322,7 @@ label chp2_2:
             if repeat2 == 0:
                 $ repeat2 += 1
                 show charles
-                "ADD SOMETHING"
+                c "Marge spends a lot of time with Mikey so he grew quite attached to her."
                 hide charles
                 $ explain += 1
                 if explain != 3:
@@ -336,7 +337,7 @@ label chp2_2:
             if repeat3 == 0:
                 $ repeat3 += 1
                 show charles
-                "ADD SOMETHING"
+                c "Mikey is easily scared since there is a lot of things he doesn't know about."
                 hide charles
                 $ explain += 1
                 if explain != 3:
@@ -360,7 +361,7 @@ label chp2_2:
             if repeat1 == 0:
                 $ repeat1 += 1
                 show charles
-                "ADD SOMETHING"
+                c "She's always looking out for Mikey and takes great care for him when we aren't around."
                 hide charles
                 $ explain += 1
                 if explain != 3:
@@ -374,7 +375,7 @@ label chp2_2:
             if repeat2 == 0:
                 $ repeat2 += 1
                 show charles
-                "ADD SOMETHING"
+                c "She's trying to show that she is independent but it comes off looking rebellious at times."
                 hide charles
                 $ explain += 1
                 if explain != 3:
@@ -388,7 +389,7 @@ label chp2_2:
             if repeat3 == 0:
                 $ repeat3 += 1
                 show charles
-                "ADD SOMETHING"
+                c "She's kind off tom-boyish and doesn't really pay attention to appearance all that much."
                 hide charles
                 $ explain += 1
                 if explain != 3:
@@ -408,6 +409,7 @@ label chp2_2:
     show francisco
     f "Thank you for sharing all this."
     f "Give me a moment while I look over the evidence."
+    f "If I combined with what you've told me and the previous cases..."
     hide francisco
     "Francisco lays out some papers on his desk and seems to go into a deep state of thought."
 
@@ -446,7 +448,7 @@ label chp2_2:
     "Francisco finally calms himself down, taking a deep breath."
     "He stares at Charles and Marge, smirking."
     show francisco
-    f "Mr. and Mrs. LAST NAME. I have a plan."
+    f "Mr. and Mrs. Reed. I have a plan."
     f "And when that plan succeeds I promise you that we will get back your children safe and sound."
 
     f "{i}La Llorona… demonia… morirás por lo que le hiciste a mi familia.{/i}"
