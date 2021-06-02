@@ -271,12 +271,22 @@ label chp2_2:
     show francisco
     f "Hola, ¿cómo puedo ayuda- ah."
     f "Lo siento- sorry, I’m not used to tourists visiting my office."
-    f "Mr. and Mrs. LAST NAME, it’s good to see you two."
+    f "Mr. and Mrs..."
+    hide francisco
+    show charles
+    c "Reed. I am Charles Reed."
+    hide charles
+    show marge
+    ma "I'm Margaret Reed."
+    hide marge
+    show francisco
+    f "...it’s good to see you two."
     f "Take a seat."
     hide francisco
     "Charles and Marge both sit down at the two chairs opposite Francisco, though Marge is far more reluctant to do so."
     show francisco
     f "To start off with, I want to offer my condolences."
+    f "I heard from one of my acquaintances."
     f "I know that this is a very stressful situation for the both of you."
     f "This, unfortunately, isn’t the first time La Llorona has struck."
     f "But rest assured that I will do everything in my power to make this the last time."
@@ -527,7 +537,7 @@ label chp2_2:
     "He grabs her hand and reassures that everything will be fine."
     "After a couple of seconds, Margaret catches her breathe and gets out."
     scene night lake with fade_chp
-    "The group approaches the lake un suddenly..."
+    "The group approaches the lake when suddenly..."
 
     play sound "cry.wav" volume 1.0
     pause 2
@@ -538,7 +548,7 @@ label chp2_2:
     hide marge
     show llorona
     #wipe the screen to show only the bg
-    f "Mira. Look There is." #show llorona
+    f "Mira. Look, there it is." #show llorona
 
     c "Where's Lisa and Mikey?"
 
@@ -582,7 +592,7 @@ label chp2_2:
 
             "Unable to stop LLorona, Francisco and Michael can only watch the demon pull a screaming Margaret deeper in the lake.."
             "...the kids willingly following behind..."
-            "The lake becomes still... but Michael's agonized scream can be through the night."
+            "The lake becomes still... but Michael's agonized scream can be heard through the night."
             "BAD END"
             jump end
     menu:
@@ -660,7 +670,7 @@ label chp2_2:
     hide francisco
     "Charles begins to chant a verse."
 
-    "The chant pulls Llorona's attention and she rushes Michael."
+    "The chant catches Llorona's attention and she rushes Charles."
     "Llorona swings her left arm towards Charles."
     menu:
         "Duck Right":
@@ -674,8 +684,8 @@ label chp2_2:
             $ mistake += 1
             if mistake >= 2:
                 "The pain becomes too excrutiating for Charles."
-                "Unable to stand, Llorona grabs Michael and drags him towards the Lake"
-                "Despite Francisco's efforts, he cannot save Michael"
+                "Unable to stand, La Llorona grabs Charles and drags him towards the lake"
+                "Despite Francisco's efforts, he cannot save Charles"
                 show charles
                 c "{i}...Margaret... kids... I'm... so-{/i}"
                 scene underwater with drown
@@ -691,15 +701,15 @@ label chp2_2:
 
     "Francisco chants again... louder this time..."
 
-    "Charles expected to see Llorona rage again... however the sight surprised him."
+    "Charles expected to see La Llorona rage again... however the sight surprised him."
 
-    "Llorona seemed to be in pain. Every syllable from Francisco forces her to flinch."
+    "La Llorona seemed to be in pain. Every syllable from Francisco forces her to flinch."
     show francisco
     f "...it is possible..."
     hide francisco
     "Seeing this opportunity, Charles begins to chant louder as well."
 
-    "Unable to handle the chanting, Llorona approaches Charles to try and silence him."
+    "Unable to handle the chanting, La Llorona approaches Charles to try and silence him."
     "It lunges forward at Charles"
     menu:
         "Raise the crucifix":
@@ -712,8 +722,8 @@ label chp2_2:
             $ mistake += 1
             if mistake >= 2:
                 "The pain becomes too excrutiating for Charles."
-                "Unable to stand, Llorona grabs Michael and drags him towards the Lake"
-                "Despite Francisco's efforts, he cannot save Michael"
+                "Unable to stand, La Llorona grabs Charles and drags him towards the lake"
+                "Despite Francisco's efforts, he cannot save Charles"
                 show charles
                 c "{i}...Margaret... kids... I'm... so-{/i}"
                 scene underwater with drown
@@ -724,8 +734,8 @@ label chp2_2:
 
             "...and with his family's safety in mind he manages to get up."
         "Jump to the side":
-            "In just a nick of time, Charles manages to dodge out of Llorona's charge."
-            "As Llorona recovers from her charge, Charles groups up with Francisco."
+            "In just a nick of time, Charles manages to dodge out of La Llorona's charge."
+            "As La Llorona recovers from her charge, Charles groups up with Francisco."
 
     $ mistake = 0
     "{i}I'm almost at my limit here... I hope Margaret got the kids to safety.{/i}"
@@ -738,31 +748,30 @@ label chp2_2:
 
     "Charles and Francisco continue to lead the demon away from the children."
 
-    "Suddenly Llorona’s attacks stop entirely. She turns around, her attention now towards Margaret and the kids."
+    "Suddenly La Llorona’s attacks stop entirely. She turns around, her attention now towards Margaret and the kids."
 
     "She begins to move towards them."
 
     menu:
-        "Stop Llorona":
+        "Stop La Llorona":
             "Charles runs in front of the demon and raises the crucifix towards her."
             with hurt
             with hpunch
-            "Angered by his actions, Llorona knocks Charles to the side. "
+            "Angered by his actions, La Llorona knocks Charles to the side. "
         "Let her go":
             "With nothing stopping it, the ghost makes a mad dash towards Margaret."
             "Both Lisa and Margaret are left face to face with her."
-            "Suddenly, the fear from Lisa and Margaret disappear and willingly follow Llorona deeper into the lake."
+            "Suddenly, the fear from Lisa and Margaret disappear and willingly follow La Llorona deeper into the lake."
             "Despite Charles’s best effort, he was not able to reach his family as they disappeared below the lake."
             "BAD END"
             jump end
 
-    "Francisco manages to catch up with Llorona and begins chanting verses, whilst keeping his crucifix raised towards Llorona."
-    "Llorona clutches her head and wails in pain, unable to move forward towards the kids."
+    "Francisco manages to catch up with La Llorona and begins chanting verses, whilst keeping his crucifix raised towards Llorona."
+    "La Llorona clutches her head and wails in pain, unable to move forward towards the kids."
 
     with fade_pov
-    "MARGARET POV"
 
-    "Llorona’s wail pierced through the night sky."
+    "La Llorona’s wail pierced through the night sky."
     "Both Margaret and Lisa cover their ears to try and block out her shriek."
     "As the shriek died down, Margaret hears someone whimpering,"
     show mikey
@@ -778,7 +787,7 @@ label chp2_2:
 
     "Then the shrieking started up again."
 
-    "Margaret looks up and sees Francisco holding back Llorona."
+    "Margaret looks up and sees Francisco holding back La Llorona."
     "However, she sees that whatever was holding her back is suddenly waning in power."
     "...it inches ever closer to the detective."
     "Looking towards the lakeside she sees Charles, beaten and bleeding, signaling them to come over."
@@ -802,10 +811,9 @@ label chp2_2:
     "Lisa follows Margaret."
 
     with fade_pov
-    "CHARLES POV"
 
-    "Suddenly Charles hears loud yelling from Francisco, as if he is trying to drown Llorona’s shrieking."
-    "In reaction to this, Llorona begins to back away towards the lake."
+    "Suddenly Charles hears loud yelling from Francisco, as if he is trying to drown La Llorona’s shrieking."
+    "In reaction to this, La Llorona begins to back away towards the lake."
 
     "Despite not understanding what he is saying, he can hear..."
     "ANGER"
@@ -822,9 +830,9 @@ label chp2_2:
     show francisco
     f "No no no… I’m so close…. So close… look at it! LOOK AT IT! IT’S SCARED OF ME."
     hide francisco
-    "Despite his claims, Llorona manages to inch her way towards Francisco."
+    "Despite his claims, La Llorona manages to inch her way towards Francisco."
     "Seeing this, the detective screams his chants even louder."
-    "With each chant, the ghost is forced to back away whilst Francisco continues to move towards Llorona."
+    "With each chant, the ghost is forced to back away whilst Francisco continues to move towards La Llorona."
     show francisco
     f "no me queda nada..."
     f "¡ME TOMASTE TODO!" with hpunch
@@ -843,7 +851,7 @@ label chp2_2:
             jump leave_francisco
     menu:
         "Convince Francisco":
-            "Charles notices a smile from Llorona."
+            "Charles notices a smile from La Llorona."
             show charles
             c "FRANCISCO YOU’RE FALLING FOR HER TRAP!"
             hide charles
@@ -867,9 +875,9 @@ label chp2_2:
         "Leave Francisco":
             jump leave_francisco
 
-    "Now smiling widely, Llorona lunges at Francisco."
+    "Now smiling widely, La Llorona lunges at Francisco."
     "She grabs the detective and pulls him under."
-    "Despite wanting to help the detective, Michael is too frightened to enter the water."
+    "Despite wanting to help the detective, Charles is too frightened to enter the water."
     "The water continues to thrash around where the detective used to be."
     #bg should be just pic of water
     scene calm water
@@ -940,7 +948,7 @@ label chp2_2:
     hide charles
     show police
     police "Charles, don’t lie to me."
-    police "The delegacion (precinct) knows that Francisco most likely played a part in kidnapping your kids and had an ulterior motive."
+    police "The delegación knows that Francisco most likely played a part in kidnapping your kids and had an ulterior motive."
     police "Stop protecting him and tell us where he is."
     hide police
     show charles
@@ -981,6 +989,7 @@ label chp2_2:
 
     scene black screen with fade_pov
     play sound "cry.wav" volume 1.0
+    pause 3
     "END"
 
     label end:
